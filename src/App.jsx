@@ -1,5 +1,11 @@
+import GameCardGrid from "./components/GameCardGrid";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <GameCardGrid />
+    </>
+  );
 }
 
 export default App;
