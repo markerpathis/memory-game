@@ -14,11 +14,12 @@ const GameCardGrid = () => {
   let mergeTeams = reducedTeams.concat(duplicateTeams);
   let finalTeams = shuffleTeams(mergeTeams);
   console.log(finalTeams);
+
   return (
     <>
       <SimpleGrid columns={{ sm: 4 }} padding="10px" spacing={6}>
-        {cards.map((card) => (
-          <GameCard key={card} />
+        {finalTeams.map((team, index) => (
+          <GameCard key={index} team={team} />
         ))}
       </SimpleGrid>
     </>
