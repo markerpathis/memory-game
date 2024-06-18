@@ -8,27 +8,40 @@ import TeamMap from "../services/TeamMap";
 const GameCardGrid = () => {
   const [finalTeams, setFinalTeams] = useState([]);
   const [clickedTeams, setClickedTeams] = useState([]);
-  console.log(clickedTeams);
+  console.log(finalTeams);
   const teamClickHandler = (value) => {
     setClickedTeams([...clickedTeams, value]);
     console.log(clickedTeams);
   };
 
+  const setIndex = (teams) => {
+    const response = teams.map((team, index) => {
+      return {
+        ...team,
+        position: index,
+      };
+    });
+    return response;
+  };
+
   useEffect(() => {
-    let selectedTeams = shuffleTeams(TeamMap);
+    let selectedTeams = shuffleTeams([...TeamMap]);
     let reducedTeams = reduceTeams(selectedTeams);
-    let duplicateTeams = reducedTeams;
+    let duplicateTeams = [...reducedTeams];
     let mergeTeams = reducedTeams.concat(duplicateTeams);
-    let shuffledTeams = shuffleTeams(mergeTeams);
-    setFinalTeams(shuffledTeams);
+    let shuffledTeams = shuffleTeams([...mergeTeams]);
+    let indexedTeams = setIndex([...shuffledTeams]);
+    setFinalTeams(indexedTeams);
   }, []);
 
   return (
     <>
       <SimpleGrid columns={{ sm: 4 }} padding="10px" spacing={6}>
-        {finalTeams.map((team, index) => (
-          <GameCard key={index} team={team} onSelection={teamClickHandler} />
-        ))}
+        {finalTeams.map((team, index) => {
+          return (
+            <GameCard key={index} team={team} onSelection={teamClickHandler} />
+          );
+        })}
       </SimpleGrid>
     </>
   );

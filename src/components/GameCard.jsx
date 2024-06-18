@@ -5,18 +5,20 @@ import questionMarkIconDark from "../assets/question-mark-dark.png";
 
 const GameCard = ({ team, onSelection }) => {
   const [isClicked, setIsClicked] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
 
   const cardClicked = () => {
     setIsClicked(true);
+    team.clicked = true;
     console.log(team);
-    onSelection(team.abbreviation);
+    onSelection(team);
   };
 
   return (
     <Card onClick={cardClicked}>
       <CardBody>
         <Container centerContent>
-          {isClicked === true ? (
+          {isCorrect || isClicked ? (
             <Image src={team.logo} alt="" boxSize="100px" />
           ) : (
             <Image src={questionMarkIconDark} alt="" boxSize="100px" />

@@ -1,4 +1,5 @@
 const shuffleTeams = (array) => {
+  console.log(array);
   let currentIndex = array.length;
   while (currentIndex != 0) {
     let randomIndex = Math.floor(Math.random() * currentIndex);
@@ -10,7 +11,7 @@ const shuffleTeams = (array) => {
     ];
   }
 
-  console.log(array);
+  // console.log(array);
 
   return array;
 };
