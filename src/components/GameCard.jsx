@@ -18,7 +18,7 @@ const GameCard = ({ team, onSelection }) => {
     <Card onClick={cardClicked}>
       <CardBody>
         <Container centerContent>
-          {isCorrect || isClicked ? (
+          {isCorrect || team.clicked ? (
             <Image src={team.logo} alt="" boxSize="100px" />
           ) : (
             <Image src={questionMarkIconDark} alt="" boxSize="100px" />

@@ -8,7 +8,7 @@ import TeamMap from "../services/TeamMap";
 const GameCardGrid = () => {
   const [finalTeams, setFinalTeams] = useState([]);
   const [clickedTeams, setClickedTeams] = useState([]);
-  console.log(finalTeams);
+
   const teamClickHandler = (value) => {
     setClickedTeams([...clickedTeams, value]);
     console.log(clickedTeams);
@@ -23,6 +23,24 @@ const GameCardGrid = () => {
     });
     return response;
   };
+
+  if (clickedTeams.length > 1) {
+    if (clickedTeams[0].abbreviation === clickedTeams[1].abbreviation) {
+      for (let i = 0; i < 2; i++) {
+        let index = clickedTeams[i].position;
+        finalTeams[index].correct = true;
+        setClickedTeams([]);
+      }
+      console.log(finalTeams);
+    } else {
+      for (let i = 0; i < 2; i++) {
+        let index = clickedTeams[i].position;
+        finalTeams[index].clicked = false;
+        setClickedTeams([]);
+      }
+      setClickedTeams([]);
+    }
+  }
 
   useEffect(() => {
     let selectedTeams = shuffleTeams([...TeamMap]);
