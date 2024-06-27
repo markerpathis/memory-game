@@ -11,7 +11,6 @@ const GameCardGrid = () => {
 
   const teamClickHandler = (value) => {
     setClickedTeams([...clickedTeams, value]);
-    console.log(clickedTeams);
   };
 
   const setIndex = (teams) => {
@@ -29,8 +28,6 @@ const GameCardGrid = () => {
     let index2 = clickedTeams[1].position;
     if (clickedTeams[0].abbreviation === clickedTeams[1].abbreviation) {
       setTimeout(() => {
-        finalTeams[index1].clicked = true;
-        finalTeams[index2].clicked = true;
         setClickedTeams((clickedTeams) => clickedTeams.splice(0, 2));
       }, 150);
     } else {
