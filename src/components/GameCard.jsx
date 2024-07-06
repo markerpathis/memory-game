@@ -26,7 +26,7 @@ const GameCard = ({ team, onSelection }) => {
   return (
     <Card onClick={cardClicked}>
       <CardBody>
-        <Container centerContent>
+        <Container centerContent padding={0}>
           {team.clicked ? (
             <Image src={team.logo} alt="" boxSize="100px" />
           ) : (

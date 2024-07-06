@@ -1,14 +1,18 @@
-import { Heading, HStack, Text } from "@chakra-ui/react";
+import { Heading, HStack, VStack } from "@chakra-ui/react";
 import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
+import Timer from "./Timer";
 
 const NavBar = () => {
   return (
     <>
-      <HStack padding="10px" justify="space-between">
+      <VStack paddingTop="20px" justify="space-between">
         <Heading fontSize="50px">NHL Memory Match</Heading>
-        <ColorModeSwitch />
-      </HStack>
+        <HStack spacing={12}>
+          <Timer />
+          <ColorModeSwitch />
+        </HStack>
+      </VStack>
     </>
   );
 };

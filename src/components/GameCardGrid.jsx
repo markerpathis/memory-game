@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { GridItem, SimpleGrid, Grid } from "@chakra-ui/react";
 import GameCard from "./GameCard";
 import React, { useEffect, useState } from "react";
 import shuffleTeams from "../services/shuffleTeams";
@@ -51,13 +51,15 @@ const GameCardGrid = () => {
 
   return (
     <>
-      <SimpleGrid columns={{ sm: 4 }} padding="10px" spacing={6}>
+      <Grid templateColumns="repeat(4, 4fr)" gap={3}>
         {finalTeams.map((team, index) => {
           return (
-            <GameCard key={index} team={team} onSelection={teamClickHandler} />
+            <GridItem key={index}>
+              <GameCard team={team} onSelection={teamClickHandler} />
+            </GridItem>
           );
         })}
-      </SimpleGrid>
+      </Grid>
     </>
   );
 };
