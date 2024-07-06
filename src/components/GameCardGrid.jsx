@@ -5,12 +5,13 @@ import shuffleTeams from "../services/shuffleTeams";
 import reduceTeams from "../services/reduceTeams";
 import TeamMap from "../services/TeamMap";
 
-const GameCardGrid = () => {
+const GameCardGrid = ({ gameStatus, setGameStatus }) => {
   const [finalTeams, setFinalTeams] = useState([]);
   const [clickedTeams, setClickedTeams] = useState([]);
 
   const teamClickHandler = (value) => {
     setClickedTeams([...clickedTeams, value]);
+    setGameStatus("started");
   };
 
   const setIndex = (teams) => {
@@ -55,7 +56,11 @@ const GameCardGrid = () => {
         {finalTeams.map((team, index) => {
           return (
             <GridItem key={index}>
-              <GameCard team={team} onSelection={teamClickHandler} />
+              <GameCard
+                team={team}
+                onSelection={teamClickHandler}
+                gameStatus={gameStatus}
+              />
             </GridItem>
           );
         })}

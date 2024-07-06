@@ -9,7 +9,7 @@ import {
 import questionMarkIconLight from "../assets/question-mark-light.png";
 import questionMarkIconDark from "../assets/question-mark-dark.png";
 
-const GameCard = ({ team, onSelection }) => {
+const GameCard = ({ team, onSelection, gameStatus }) => {
   const { colorMode } = useColorMode();
   let iconImage = "";
   if (colorMode === "dark") {
@@ -19,8 +19,10 @@ const GameCard = ({ team, onSelection }) => {
   }
 
   const cardClicked = () => {
-    team.clicked = true;
-    onSelection(team);
+    if (gameStatus !== "ended") {
+      team.clicked = true;
+      onSelection(team);
+    }
   };
 
   return (

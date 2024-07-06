@@ -1,24 +1,23 @@
 import { Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const Timer = () => {
+const Timer = ({ gameStatus, setGameStatus }) => {
   const [seconds, setSeconds] = useState(30);
-
-  console.log(seconds);
 
   const runTimer = () => {
     if (seconds > 0) {
       setTimeout(() => {
-        setSeconds((seconds) => seconds - 1);
+        let updatedSeconds = seconds - 1;
+        setSeconds(updatedSeconds);
       }, 1000);
     } else {
-      setSeconds(0);
+      setGameStatus("ended");
     }
   };
 
-  useEffect(() => {
+  if (gameStatus === "started") {
     runTimer();
-  });
+  }
 
   return <Text>Timer: {seconds}</Text>;
 };

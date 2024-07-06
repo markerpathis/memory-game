@@ -3,13 +3,13 @@ import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Timer from "./Timer";
 
-const NavBar = () => {
+const NavBar = ({ gameStatus, setGameStatus }) => {
   return (
     <>
       <VStack paddingTop="20px" justify="space-between">
         <Heading fontSize="50px">NHL Memory Match</Heading>
         <HStack spacing={12}>
-          <Timer />
+          <Timer gameStatus={gameStatus} setGameStatus={setGameStatus} />
           <ColorModeSwitch />
         </HStack>
       </VStack>
