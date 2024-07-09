@@ -40,7 +40,7 @@ const GameCardGrid = ({ gameStatus, setGameStatus }) => {
     }
   }
 
-  useEffect(() => {
+  const TeamProcess = () => {
     let selectedTeams = shuffleTeams([...TeamMap]);
     let reducedTeams = reduceTeams(selectedTeams);
     let duplicateTeams = [...reducedTeams];
@@ -48,7 +48,19 @@ const GameCardGrid = ({ gameStatus, setGameStatus }) => {
     let shuffledTeams = shuffleTeams([...mergeTeams]);
     let indexedTeams = setIndex([...shuffledTeams]);
     setFinalTeams(indexedTeams);
+  };
+
+  useEffect(() => {
+    TeamProcess();
   }, []);
+
+  useEffect(() => {
+    if (gameStatus === "restart") {
+      TeamProcess();
+      setGameStatus("notStarted");
+      setClickedTeams([]);
+    }
+  }, [gameStatus]);
 
   return (
     <>

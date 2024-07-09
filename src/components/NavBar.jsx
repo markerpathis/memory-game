@@ -2,6 +2,7 @@ import { Heading, HStack, VStack } from "@chakra-ui/react";
 import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import Timer from "./Timer";
+import PlayButton from "./PlayButton";
 
 const NavBar = ({ gameStatus, setGameStatus }) => {
   return (
@@ -12,6 +13,11 @@ const NavBar = ({ gameStatus, setGameStatus }) => {
           <Timer gameStatus={gameStatus} setGameStatus={setGameStatus} />
           <ColorModeSwitch />
         </HStack>
+        {gameStatus === "ended" ? (
+          <PlayButton setGameStatus={setGameStatus} />
+        ) : (
+          <div></div>
+        )}
       </VStack>
     </>
   );

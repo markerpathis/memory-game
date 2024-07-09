@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardBody,
@@ -19,7 +19,8 @@ const GameCard = ({ team, onSelection, gameStatus }) => {
   }
 
   const cardClicked = () => {
-    if (gameStatus !== "ended") {
+    // cards cannot be clicked after the game ends, until they begin the next game
+    if (gameStatus === "started" || gameStatus === "notStarted") {
       team.clicked = true;
       onSelection(team);
     }

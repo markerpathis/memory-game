@@ -5,7 +5,7 @@ import GameCardGrid from "./components/GameCardGrid";
 
 function App() {
   const [gameStatus, setGameStatus] = useState("notStarted");
-  console.log(gameStatus);
+
   return (
     <>
       <NavBar gameStatus={gameStatus} setGameStatus={setGameStatus} />
