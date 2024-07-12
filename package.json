@@ -1,6 +1,5 @@
 {
   "name": "memory-game",
-  "private": true,
   "version": "0.0.0",
   "homepage": "https://markerpathis.github.io/memory-game/",
   "type": "module",
