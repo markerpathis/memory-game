@@ -1,15 +1,15 @@
 {
   "name": "memory-game",
   "version": "0.0.0",
-  "homepage": "http://markerpathis.github.io/memory-game",
+  "homepage": "https://markerpathis.github.io/memory-game/",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "react-scripts build",
+    "build": "vite build --base=./",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
