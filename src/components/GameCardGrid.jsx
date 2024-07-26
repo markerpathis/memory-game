@@ -30,17 +30,17 @@ const GameCardGrid = ({ gameStatus, setGameStatus }) => {
       let index2 = clickedTeams[1].position;
       if (clickedTeams[0].abbreviation === clickedTeams[1].abbreviation) {
         setTimeout(() => {
-          setClickedTeams((clickedTeams) => clickedTeams.splice(0, 2));
+          setClickedTeams((clickedTeams) => (clickedTeams = []));
         }, 150);
       } else {
         setTimeout(() => {
           finalTeams[index1].clicked = false;
           finalTeams[index2].clicked = false;
-          setClickedTeams((clickedTeams) => clickedTeams.splice(0, 2));
+          setClickedTeams((clickedTeams) => (clickedTeams = []));
         }, 150);
       }
     }
-  }, [clickedTeams]);
+  }, [clickedTeams.length]);
 
   const TeamProcess = () => {
     let selectedTeams = shuffleTeams([...TeamMap]);

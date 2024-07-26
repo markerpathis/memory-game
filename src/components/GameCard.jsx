@@ -21,10 +21,16 @@ const GameCard = ({ team, onSelection, gameStatus }) => {
   const cardClicked = () => {
     // cards cannot be clicked after the game ends, until they begin the next game
     if (gameStatus === "started" || gameStatus === "notStarted") {
-      team.clicked = true;
-      onSelection(team);
+      if (!team.clicked) {
+        team.clicked = true;
+        onSelection(team);
+      }
     }
   };
+
+  // useEffect(() => {
+  //   console.log("YOOOOO");
+  // }, [team.clicked]);
 
   return (
     <Card onClick={cardClicked}>
